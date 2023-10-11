@@ -3,11 +3,11 @@ import { getPreguntas } from "./fetch.ts";
 
 export const inicializarDatosJuego = async (): Promise<Game> => {
   let nJugadores = prompt("Introduce el numero de jugadores: ");
-  while (nJugadores?.length === 0 || nJugadores === null) {
+  let numeroJugadores: number = Number.parseInt(nJugadores as string);
+  while (Number.isNaN(numeroJugadores) || numeroJugadores <= 1) {
     nJugadores = prompt("Introduce un valor valido.");
+    numeroJugadores = Number.parseInt(nJugadores as string);
   }
-
-  const numeroJugadores: number = Number.parseInt(nJugadores);
 
   const game: Game = { numeroJugadores, jugadores: [], numeroPreguntas: 0 };
 
