@@ -17,3 +17,9 @@ export interface Game {
   numeroPreguntas: number;
   jugadores: Jugador[];
 }
+
+export interface Data {
+  incorrect_answers: string[];
+  correct_answer: string;
+  [key: string]: string | string[];
+}

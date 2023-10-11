@@ -59,6 +59,7 @@ export const manejarPregunta = (jugador: Jugador, numero: number): void => {
 
   const pregunta: Pregunta = jugador.preguntas[numero];
 
+  console.log(`Categoria: ${pregunta.categoria}`);
   console.log(pregunta.pregunta);
 
   pregunta.respuestas.forEach((r, i) => console.log(`${i + 1}. ${r}`));
