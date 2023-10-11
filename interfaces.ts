@@ -21,5 +21,5 @@ export interface Game {
 export interface Data {
   incorrect_answers: string[];
   correct_answer: string;
-  [key: string]: string | string[];
+  [key: string]: string | string[]; // Hago esto para permitir el resto de propiedades del objeto en el tipo Data sin escribirlas todas
 }

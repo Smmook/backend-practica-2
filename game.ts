@@ -1,7 +1,9 @@
 import { Game, Jugador, Pregunta } from "./interfaces.ts";
 import { getPreguntas } from "./fetch.ts";
 
+// Funcion para obtener por consola las opciones del juego y obtener las preguntas
 export const inicializarDatosJuego = async (): Promise<Game> => {
+  // Obtenemos las opciones
   let nJugadores = prompt("Introduce el numero de jugadores: ");
   let numeroJugadores: number = Number.parseInt(nJugadores as string);
   while (Number.isNaN(numeroJugadores) || numeroJugadores <= 1) {
@@ -41,10 +43,12 @@ export const inicializarDatosJuego = async (): Promise<Game> => {
   }
   game.numeroPreguntas = Number.parseInt(numPre);
 
+  // Obtenemos las preguntas para la partida
   await obtenerPreguntas(game);
   return game;
 };
 
+// Pedimos las preguntas para cada jugador
 const obtenerPreguntas = async (game: Game): Promise<void> => {
   for (const jugador of game.jugadores) {
     jugador.preguntas = await getPreguntas(
@@ -54,6 +58,7 @@ const obtenerPreguntas = async (game: Game): Promise<void> => {
   }
 };
 
+// Funcion para imprimir la pregunta con sus respuestas y manejar la entrada de la respuesta
 export const manejarPregunta = (jugador: Jugador, numero: number): void => {
   console.log(`\nTurno de ${jugador.nombre}.`);
 

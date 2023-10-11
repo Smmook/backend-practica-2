@@ -27,6 +27,7 @@ export enum Category {
   "Entertainment: Cartoon & Animations",
 }
 
+// Funcion que convierte el objeto obtenido por la api a mi tipo Pregunta
 const toPregunta = (p: Data): Pregunta => {
   const temp: string[] = [p.correct_answer, ...p.incorrect_answers];
   let respuestas: string[];
@@ -52,6 +53,7 @@ const toPregunta = (p: Data): Pregunta => {
   } as Pregunta;
 };
 
+// Funcion encargada de hacer el fetch que devuelve el array de preguntas
 export const getPreguntas = async (
   cantidad: number,
   difficulty: "easy" | "medium" | "hard",
